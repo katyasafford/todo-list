@@ -34,11 +34,28 @@ export class TodoListComponent {
   }
 
   public clearCompletedItems(): void {
-    this.toDoItems.forEach((el, i) => {
-      if (el.completed) {
-        this.toDoItems.splice(i, 1);
+    const activeItemsLeft = [];
+
+    this.toDoItems.forEach(el => {
+      if (!el.completed) {
+        activeItemsLeft.push(el);
       }
     });
+
+    this.toDoItems = activeItemsLeft;
+  }
+
+  shouldShowMessage(): boolean {
+    let hasOnlyCompletedItemsLeft = true;
+
+    for (let i = 0; i < this.toDoItems.length; i++) {
+      if (!this.toDoItems[i].completed) {
+        hasOnlyCompletedItemsLeft = false
+        break;
+      }
+    }
+    
+    return hasOnlyCompletedItemsLeft && !this.showAllItems;
   }
 
 }

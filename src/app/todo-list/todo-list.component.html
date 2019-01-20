@@ -34,6 +34,10 @@
 
 </div>
 
+<div class="no-items-to-complete-msg" *ngIf="shouldShowMessage()">
+  You don't have any items to complete left!
+</div>
+
 <app-todo-footer
     [items]="toDoItems"
     (clearCompleted)="clearCompletedItems()"

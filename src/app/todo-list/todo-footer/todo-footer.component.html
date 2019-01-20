@@ -8,8 +8,7 @@
     class="show-all-btn"
     *ngIf="items.length > 0"
     [class.active-button]="showAllStatus"
-    (click)="displayAllItems()"
-    [disabled]="showAllStatus">
+    (click)="displayAllItems()">
       All
     </button>
 
@@ -18,8 +17,7 @@
     type="button"
     *ngIf="items.length > 0"
     [class.active-button]="!showAllStatus"
-    (click)="displayCompletedItems()"
-    [disabled]="!showAllStatus || !hasCompletedItems()">
+    (click)="displayCompletedItems()">
       Active
   </button>
   <span class="footer-spacer"></span>
