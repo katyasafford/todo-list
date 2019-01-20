@@ -18,8 +18,8 @@
     type="button"
     *ngIf="items.length > 0"
     [class.active-button]="!showAllStatus"
-    (click)="displayActiveItems()"
-    [disabled]="!showAllStatus || !hasActiveItems()">
+    (click)="displayCompletedItems()"
+    [disabled]="!showAllStatus || !hasCompletedItems()">
       Active
   </button>
   <span class="footer-spacer"></span>
@@ -30,7 +30,7 @@
     color="accent"
     *ngIf="items.length > 0"
     (click)="clearCompletedBtnClicked()"
-    [disabled]="!hasActiveItems()">
+    [disabled]="!hasCompletedItems()">
       Clear Completed
   </button>
 </mat-toolbar>

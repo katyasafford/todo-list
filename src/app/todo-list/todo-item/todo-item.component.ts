@@ -7,13 +7,10 @@ import { Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
 })
 export class TodoItemComponent implements OnInit {
   @Input() itemName: string;
-  @Input() isItemActive: boolean;
+  @Input() isItemCompleted: boolean;
 
   @Output() itemRemoved = new EventEmitter();
   @Output() itemStatusChanged = new EventEmitter();
-
-  // private itemName: string;
-  // private isItemActive: boolean;
 
   constructor() { }
 
@@ -24,7 +21,7 @@ export class TodoItemComponent implements OnInit {
   }
 
   public itemStatusChanges(): void {
-    this.itemStatusChanged.emit(this.isItemActive);
+    this.itemStatusChanged.emit(this.isItemCompleted);
   }
 
 }

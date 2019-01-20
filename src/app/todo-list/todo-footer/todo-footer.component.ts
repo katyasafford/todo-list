@@ -16,16 +16,16 @@ export class TodoFooterComponent {
     this.clearCompleted.emit();
   }
 
-  public hasActiveItems(): boolean {
-    let hasActiveItems = false;
+  public hasCompletedItems(): boolean {
+    let hasCompletedItems = false;
 
     this.items.forEach(el => {
-      if (el['active']) {
-        hasActiveItems = true;
+      if (el['completed']) {
+        hasCompletedItems = true;
       }
     });
 
-    return hasActiveItems;
+    return hasCompletedItems;
   }
 
   public displayAllItems(): void {
@@ -33,7 +33,7 @@ export class TodoFooterComponent {
     this.showAll.emit(this.showAllStatus);
   }
 
-  public displayActiveItems(): void {
+  public displayCompletedItems(): void {
     this.showAllStatus = false;
     this.showAll.emit(this.showAllStatus);
   }

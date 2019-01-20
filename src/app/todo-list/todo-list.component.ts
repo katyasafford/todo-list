@@ -7,37 +7,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodoListComponent implements OnInit {
   public toDoItems = [];
-  public activeItems = [];
+  public notCompletedItems = [];
   public newItem: string;
-  public showAllItems: boolean = true;
+  public showAllItems = true;
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  /** this method will decide if we show all items or just active ones
-   * and also we will create array of active items to display here */
+  /** this method will decide if we show all items or just completed ones */
   public displayItemsConditionally(e): void {
     this.showAllItems = e;
-
-    if (this.showAllItems) {
-      this.activeItems = [];
-    }
-
-    if (!this.showAllItems) {
-      this.toDoItems.forEach(el => {
-        if (el.active) {
-          this.activeItems.push(el);
-        }
-      });
-    }
   }
 
   /** this will be executed when user presses Enter in the input field */
   public addItem(e): void {
     if (e.key === 'Enter') {
-      this.toDoItems.push({ name: this.newItem, active: false });
+      this.toDoItems.push({ name: this.newItem, completed: false });
       this.newItem = null;
     }
   }
@@ -48,12 +35,12 @@ export class TodoListComponent implements OnInit {
 
   /** set item status to true or false based on checkbox value */
   public updateItemStatus(e, index): void {
-    this.toDoItems[index].active = e;
+    this.toDoItems[index].completed = e;
   }
 
   private clearCompletedItems(): void {
     this.toDoItems.forEach((el, i) => {
-      if (el.active) {
+      if (el.completed) {
         this.toDoItems.splice(i, 1);
       }
     });

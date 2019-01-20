@@ -12,7 +12,7 @@
     <app-todo-item
         *ngFor="let item of toDoItems; let i=index"
         [itemName]="item.name"
-        [isItemActive]="item.active"
+        [isItemCompleted]="item.completed"
         class="new-todo-item"
         (itemRemoved)="removeItem(i)"
         (itemStatusChanged)="updateItemStatus($event, i)">
@@ -22,25 +22,15 @@
   <div class="active-items-wrapper" *ngIf="!showAllItems">
     <div class="active-item-wrapper" *ngFor="let item of toDoItems; let i=index">
       <app-todo-item
-          *ngIf="item.active"
+          *ngIf="!item.completed"
           [itemName]="item.name"
-          [isItemActive]="item.active"
+          [isItemCompleted]="item.completed"
           class="new-todo-item"
           (itemRemoved)="removeItem(i)"
           (itemStatusChanged)="updateItemStatus($event, i)">
       </app-todo-item>
     </div>
   </div>
-
-  <!-- <div class="active-itmes-wrapper" *ngIf="!showAllItems">
-    <app-todo-item
-        *ngFor="let item of activeItems; let i=index"
-        itemName="{{ item.name }}"
-        class="new-todo-item"
-        (itemRemoved)="removeItem(i)"
-        (itemStatusChanged)="updateItemStatus($event, i)">
-    </app-todo-item>
-  </div> -->
 
 </div>
 
