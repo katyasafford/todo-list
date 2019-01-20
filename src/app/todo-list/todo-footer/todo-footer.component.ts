@@ -10,7 +10,7 @@ export class TodoFooterComponent {
   @Output() clearCompleted = new EventEmitter();
   @Output() showAll = new EventEmitter();
 
-  private showAllStatus: boolean = true;
+  public showAllStatus = true;
 
   private clearCompletedBtnClicked(): void {
     this.clearCompleted.emit();

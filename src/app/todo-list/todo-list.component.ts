@@ -1,20 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.css']
 })
-export class TodoListComponent implements OnInit {
+export class TodoListComponent {
   public toDoItems = [];
   public notCompletedItems = [];
   public newItem: string;
   public showAllItems = true;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
 
   /** this method will decide if we show all items or just completed ones */
   public displayItemsConditionally(e): void {
@@ -38,7 +33,7 @@ export class TodoListComponent implements OnInit {
     this.toDoItems[index].completed = e;
   }
 
-  private clearCompletedItems(): void {
+  public clearCompletedItems(): void {
     this.toDoItems.forEach((el, i) => {
       if (el.completed) {
         this.toDoItems.splice(i, 1);
