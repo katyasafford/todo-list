@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./todo-list.component.css']
 })
 export class TodoListComponent implements OnInit {
-  public toDoItems: string[] = [];
+  public toDoItems = [];
   public newItem: string;
 
   constructor() { }
@@ -17,13 +17,26 @@ export class TodoListComponent implements OnInit {
   /** this will be executed when user presses Enter in the input field */
   public addItem(e): void {
     if (e.key === 'Enter') {
-      this.toDoItems.push(this.newItem);
+      this.toDoItems.push({ name: this.newItem, active: false });
       this.newItem = null;
     }
   }
 
   public removeItem(index: number): void {
     this.toDoItems.splice(index, 1);
+  }
+
+  /** set item status to true or false based on checkbox value */
+  public updateItemStatus(e, index): void {
+    this.toDoItems[index].active = e;
+  }
+
+  private clearCompletedItems(): void {
+    this.toDoItems.forEach((el, i) => {
+      if (el.active) {
+        this.toDoItems.splice(i, 1);
+      }
+    });
   }
 
 }

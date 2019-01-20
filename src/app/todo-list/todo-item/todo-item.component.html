@@ -1,5 +1,5 @@
 <mat-card>
-  <mat-checkbox></mat-checkbox>
+  <mat-checkbox [(ngModel)]="isItemActive" (change)="itemStatusChanges()"></mat-checkbox>
   <p>{{ itemName }}</p>
   <button mat-icon-button (click)="removeButtonClicked()"><mat-icon>cancel</mat-icon></button>
 </mat-card>

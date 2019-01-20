@@ -10,12 +10,14 @@
 
   <app-todo-item
       *ngFor="let item of toDoItems; let i=index"
-      itemName="{{ item }}"
+      itemName="{{ item.name }}"
       class="new-todo-item"
-      (itemRemoved)="removeItem(i)">
+      (itemRemoved)="removeItem(i)"
+      (itemStatusChanged)="updateItemStatus($event, i)">
   </app-todo-item>
 </div>
 
 <app-todo-footer
-    [items]="toDoItems">
+    [items]="toDoItems"
+    (clearCompleted)="clearCompletedItems()">
 </app-todo-footer>

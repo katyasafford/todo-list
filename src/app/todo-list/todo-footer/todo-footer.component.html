@@ -1,10 +1,16 @@
 <mat-toolbar class="footer">
-  <span>Items left: {{ items.length }}</span>
-
+  <span class="items-counter">Items left: {{ items.length }}</span>
   <span class="footer-spacer"></span>
   <button mat-button type="button" *ngIf="items.length > 0">All</button>
   <button mat-button type="button" *ngIf="items.length > 0">Active</button>
   <span class="footer-spacer"></span>
-  <button mat-button type="button" color="accent" *ngIf="items.length > 0">Clear Completed</button>
-
+  <button
+    mat-button
+    type="button"
+    color="accent"
+    *ngIf="items.length > 0"
+    (click)="clearCompletedBtnClicked()"
+    [disabled]="!hasActiveItems()">
+      Clear Completed
+  </button>
 </mat-toolbar>
