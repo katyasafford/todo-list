@@ -1,9 +1,29 @@
 <mat-toolbar class="footer">
-  <span class="items-counter">Items left: {{ items.length }}</span>
+  <span class="items-counter">Total items: {{ items.length }}</span>
   <span class="footer-spacer"></span>
-  <button mat-button type="button" *ngIf="items.length > 0">All</button>
-  <button mat-button type="button" *ngIf="items.length > 0">Active</button>
+
+  <button
+    mat-button
+    type="button"
+    class="show-all-btn"
+    *ngIf="items.length > 0"
+    [class.active-button]="showAllStatus"
+    (click)="displayAllItems()"
+    [disabled]="showAllStatus">
+      All
+    </button>
+
+  <button
+    mat-button
+    type="button"
+    *ngIf="items.length > 0"
+    [class.active-button]="!showAllStatus"
+    (click)="displayActiveItems()"
+    [disabled]="!showAllStatus || !hasActiveItems()">
+      Active
+  </button>
   <span class="footer-spacer"></span>
+
   <button
     mat-button
     type="button"

@@ -6,3 +6,7 @@ mat-card p {
 mat-card button {
   float: right;
 }
+
+.completed-item {
+  text-decoration: line-through;
+}

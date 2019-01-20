@@ -7,11 +7,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodoListComponent implements OnInit {
   public toDoItems = [];
+  public activeItems = [];
   public newItem: string;
+  public showAllItems: boolean = true;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  /** this method will decide if we show all items or just active ones
+   * and also we will create array of active items to display here */
+  public displayItemsConditionally(e): void {
+    this.showAllItems = e;
+
+    if (this.showAllItems) {
+      this.activeItems = [];
+    }
+
+    if (!this.showAllItems) {
+      this.toDoItems.forEach(el => {
+        if (el.active) {
+          this.activeItems.push(el);
+        }
+      });
+    }
   }
 
   /** this will be executed when user presses Enter in the input field */

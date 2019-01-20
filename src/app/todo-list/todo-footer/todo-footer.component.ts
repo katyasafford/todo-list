@@ -6,8 +6,11 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./todo-footer.component.css']
 })
 export class TodoFooterComponent {
-  @Input() items: string[];
+  @Input() items;
   @Output() clearCompleted = new EventEmitter();
+  @Output() showAll = new EventEmitter();
+
+  private showAllStatus: boolean = true;
 
   private clearCompletedBtnClicked(): void {
     this.clearCompleted.emit();
@@ -23,6 +26,16 @@ export class TodoFooterComponent {
     });
 
     return hasActiveItems;
+  }
+
+  public displayAllItems(): void {
+    this.showAllStatus = true;
+    this.showAll.emit(this.showAllStatus);
+  }
+
+  public displayActiveItems(): void {
+    this.showAllStatus = false;
+    this.showAll.emit(this.showAllStatus);
   }
 
 }

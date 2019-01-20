@@ -10,3 +10,11 @@
 .items-counter {
   font-size: 16px;
 }
+
+.active-button {
+  border: 1px solid;
+}
+
+.show-all-btn {
+  margin-right: 5px;
+}
