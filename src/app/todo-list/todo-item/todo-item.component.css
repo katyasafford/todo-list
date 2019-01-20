@@ -1,0 +1,8 @@
+mat-card p {
+  display: inline-block;
+  padding-left: 12px;
+}
+
+mat-card button {
+  float: right;
+}

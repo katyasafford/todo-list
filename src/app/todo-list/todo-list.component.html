@@ -1,0 +1,21 @@
+<div class="todo-list-wrapper">
+
+  <mat-form-field class="new-item">
+    <input
+      matInput
+      placeholder="New Item"
+      (keypress)="addItem($event)"
+      [(ngModel)]="newItem">
+  </mat-form-field>
+
+  <app-todo-item
+      *ngFor="let item of toDoItems; let i=index"
+      itemName="{{ item }}"
+      class="new-todo-item"
+      (itemRemoved)="removeItem(i)">
+  </app-todo-item>
+</div>
+
+<app-todo-footer
+    [items]="toDoItems">
+</app-todo-footer>

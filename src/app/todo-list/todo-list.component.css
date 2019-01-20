@@ -1,0 +1,15 @@
+.todo-list-wrapper {
+  margin-top: 20px;
+}
+
+.new-item {
+  display: block !important;
+  margin: 0 auto;
+  width: 60%;
+}
+
+.new-todo-item {
+  margin: 10px auto;
+  width: 60%;
+  display: block;
+}
